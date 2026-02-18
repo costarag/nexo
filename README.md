@@ -1,86 +1,62 @@
 # Nexo
+> AI-powered sales qualification for B2B teams
 
-Aplicacao web em PT-BR para times comerciais que querem cruzar o playbook de vendas da empresa com sinais publicos de um prospect.
+[![Live](https://img.shields.io/badge/Live-nexo--tan.vercel.app-black?style=flat-square)](https://nexo-tan.vercel.app/) ![Next.js](https://img.shields.io/badge/Next.js_15-black?style=flat-square&logo=next.js) ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
-Proposta: transformar pesquisa comercial + qualificacao em um fluxo pratico com IA, gerando discovery, pitch e proximo passo acionavel.
+![Nexo screenshot](https://api.microlink.io/?url=https%3A%2F%2Fnexo-tan.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url)
 
-Projeto com UI premium, estrutura pronta para white-label e geracao de novas paginas de marca sem persistencia.
+**→ Live at [nexo-tan.vercel.app](https://nexo-tan.vercel.app/)**
 
-## Stack
+---
 
-- Next.js 15 (App Router) + TypeScript
-- CSS global customizado (tokens e layout responsivo)
-- OpenAI SDK (`openai`)
-- Bun (dev/build local)
+## The Problem
 
-## O que voce encontra no app
+B2B sales teams waste hours manually researching prospects, qualify inconsistently across reps, and walk into discovery calls with generic pitches. Without a scalable process, conversion depends entirely on individual talent — not repeatable systems.
 
-- Workspace comercial para:
-  - inserir empresa-base e manifesto/playbook
-  - pesquisar e analisar prospect com IA
-  - receber fit score, perguntas de discovery, pitch e fontes
-- Modal `Crie sua IA de Vendas` para gerar nova pagina com:
-  - nome da empresa
-  - selecao de logo predefinido ou upload de imagem
-  - opcao `Aleatorio (IA)` para sugerir marca
-- Pagina dinamica em `/wl/[slug]` com mesma estrutura da original (sem banco)
+## The Solution
 
-## AI-driven Product Engineering
+Nexo turns your company's sales playbook into an AI qualification engine. Paste your manifesto and a prospect's name — the AI researches them publicly, scores the fit, and generates tailored discovery questions, a 30-second pitch, and a follow-up email. Stateless by design: no login, no database, instant value.
 
-Este projeto foi evoluido com abordagem de Product Engineering apoiada por IA: sair rapido de ideia para MVP funcional, iterar UX e manter caminho de deploy simples.
+## Key Features
 
-- Ferramenta: `OpenCode`
-- Modelo: `GPT-5.3` (`openai/gpt-5.3-codex`)
-- Papel da IA: acelerar estrutura de app, API routes, fluxo de marca dinamica e refinos de UX/UI
+- **Fit Score (0–100)** with justification based on your playbook
+- **BANT signals** (Budget, Authority, Need, Timeline) extracted from public data
+- **5 discovery questions** calibrated to the prospect's profile
+- **30-second pitch** personalized to their context
+- **Follow-up email template** ready to send
+- **White-label URLs** — generate `/wl/[slug]` pages with your own branding, no backend required
 
-Objetivo: demonstrar velocidade de construcao com foco em produto real, experiencia comercial e base pronta para white-label no Brasil.
+## Business Model
 
-## Executar localmente
+White-label as a viral distribution vector: every company that creates a branded URL carries Nexo to partners and prospects.
 
-1. Instale dependencias:
+| Channel | Model |
+|---------|-------|
+| Self-serve | API key per company, zero contract |
+| SaaS B2B | Per-user subscription (R$49–149/mo) |
+| Licensing | Sales enablement platforms & consultancies |
+
+## Tech Stack
+
+| Layer | Choice |
+|-------|--------|
+| Framework | Next.js 15 (App Router) |
+| AI | OpenAI `web_search_preview` |
+| Language | TypeScript |
+| Runtime | Bun |
+| Styling | Custom CSS (design tokens, responsive) |
+| Hosting | Vercel (stateless, zero infra cost) |
+
+## Running Locally
 
 ```bash
 bun install
+cp .env.example .env.local  # add your OPENAI_API_KEY
+bun dev
 ```
 
-2. Crie/atualize `.env.local`:
+Open `http://localhost:3000`.
 
-```bash
-OPENAI_API_KEY=sua_chave_aqui
-OPENAI_MODEL=gpt-4.1-mini
-```
+---
 
-3. Rode o projeto:
-
-```bash
-bun run dev
-```
-
-Abra `http://localhost:3000`.
-
-## Scripts
-
-- `bun run dev` inicia ambiente local
-- `bun run build` gera build de producao
-- `bun run start` sobe a build local
-
-## Deploy na Vercel
-
-- Suba o projeto para GitHub
-- Importe na Vercel
-- Configure variaveis de ambiente:
-  - `OPENAI_API_KEY`
-  - `OPENAI_MODEL` (opcional)
-- Deploy
-
-## Publicacao no GitHub
-
-Como este repositorio pode ser publico:
-
-- nao commitar `.env.local`
-- nao expor chave no client-side
-- manter segredos apenas em variaveis da Vercel/GitHub
-
-## Observacao
-
-As analises de fit comercial sao apoio a decisao de vendas e nao substituem discovery real com o cliente.
+*Bootstrapped with AI coding assistants in hours, not weeks.*
